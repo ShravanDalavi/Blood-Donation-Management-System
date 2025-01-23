@@ -57,7 +57,7 @@ This system is secure, cost-effective, and user-friendly, built to revolutionize
 **Backend**:
   - Python
   - Django Framework
-  - Database: PostgreSQL/MySQL/SQLite
+  - Database: SQLite
 
 - **Frontend**:
   - HTML5, CSS3, Bootstrap
