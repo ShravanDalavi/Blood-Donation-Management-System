@@ -1,0 +1,15 @@
+numpy
+jupyter
+opencv-python
+torch
+torchvision
+tensorflow
+scikit-image
+Pillow
+matplotlib
+ffmpeg-python
+tqdm
+requests
+flask
+flask-cors
+gunicorn
