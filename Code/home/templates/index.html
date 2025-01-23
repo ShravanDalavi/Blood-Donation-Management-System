@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blood Donation {% endblock %}
+{% block css %}
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fef3f3, #ffffff);
+    margin: 0;
+    padding: 0;
+    animation: pageLoad 1s ease-in-out;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: #d9534f;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    position: relative;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    filter: blur(10px);
+    z-index: -1;
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-body h3 {
+    color: #d9534f;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .btn-outline-danger {
+    border: 2px solid #d9534f;
+    color: #d9534f;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #d9534f;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(217, 83, 79, 0.4);
+  }
+
+  .album {
+    padding: 30px 0;
+  }
+
+  .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .col-md-4 {
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .col-md-4 {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .col-md-4 {
+      flex: 1 1 100%;
+    }
+  }
+
+  /* Page Load Animation */
+  @keyframes pageLoad {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Card and Button Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+  <h1 class="text-center my-4">Available Donors According to Blood Group</h1>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for i in all_group %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-text">Blood Group: {{i.name}}</h3>
+              <h3 class="card-text">Total Donors: {{i.total}}</h3>
+              <div class="d-flex justify-content-center align-items-center mt-3">
+                <a href="/donors_list/{{i.id}}/" class="btn btn-sm btn-outline-danger">View All Donors</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %} Blood Donation {% endblock %}
+
+{% block css %}
+<style>
+    body {
+        background-color: #f8f9fa; /* Light background for readability */
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    h3 {
+        color: #dc3545; /* Bootstrap danger color */
+        font-weight: bold;
+    }
+
+    table {
+        background-color: #ffffff; /* White background for contrast */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background-color: #dc3545; /* Bootstrap danger color */
+        color: white;
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternating row colors */
+    }
+
+    h2 {
+        color: #6c757d; /* Muted color for empty state */
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if requests %}
+        <h3 class="text-center">All Blood Requests</h3>
+        <br>
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Blood Group</th>
+                    <th>Donation Date</th>
+                    <th>State | City</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in requests %}
+                    <tr>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.phone }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.blood_group }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.state }} | {{ i.city }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No Blood Request Available</h2>
+    {% endif %}
+</div>
+
+{% endblock %}

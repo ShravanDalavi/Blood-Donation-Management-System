@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% block title %} Blood Donation {% endblock %}
+{% block css %}
+<style>
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #f7f9fc;
+    color: #343a40;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  h4 {
+    text-align: center;
+    color: #1d3557;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    color: #495057;
+  }
+
+  input, textarea, select {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #1d3557;
+    outline: none;
+    box-shadow: 0 0 5px rgba(29, 53, 87, 0.2);
+  }
+
+  .btn-primary {
+    background-color: #457b9d;
+    border-color: #457b9d;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background-color: #1d3557;
+    transform: translateY(-2px);
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .form-check-label {
+    margin-left: 5px;
+    font-size: 14px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .col-md-6, .col-md-12 {
+    flex: 1 1 100%;
+  }
+
+  @media (min-width: 768px) {
+    .col-md-6 {
+      flex: 1 1 48%;
+    }
+
+    .col-md-12 {
+      flex: 1 1 100%;
+    }
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    background-color: #1d3557;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #457b9d;
+    transform: translateY(-2px);
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h4>Register As Donor</h4>
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<div class="row mt-4">
+    <div class="form-group col-md-12">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-6">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name" required>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-6">
+        <label>Email ID</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email ID" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Contact Number</label>
+        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Contact Number" required>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-6">
+        <label>State</label>
+        <input type="text" class="form-control" name="state" id="state" placeholder="Enter State" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" id="city" placeholder="Enter City" required>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-12">
+        <label>Address</label>
+        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter Address" required></textarea>
+    </div>
+</div>
+
+<div class="row mt-2">
+<div class="form-group col-md-6">
+    <label>Gender</label>
+<div style="border: 1px solid lightgrey; padding: 10px; border-radius: 6px;">
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+    <label class="form-check-label">Male</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+    <label class="form-check-label">Female</label>
+  </div>
+  </div>
+  </div>
+    <div class="form-group col-md-6">
+        <label>Blood Group</label>
+        <select class="form-control" name="blood_group" required>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            </select>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-6">
+        <label>Profile Photo</label>
+        <input type="file" class="form-control" id="image" name="image" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Date Of Birth</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="form-group col-md-6">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+    </div>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}

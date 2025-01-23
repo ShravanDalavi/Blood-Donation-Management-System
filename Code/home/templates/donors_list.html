@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %} Blood Donation {% endblock %}
+
+{% block css %}
+<style>
+    body {
+        background-color: #f7f9fc; /* Subtle light blue background */
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    h3 {
+        color: #17a2b8; /* Bootstrap info color */
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s;
+    }
+
+    table {
+        background-color: #ffffff; /* White background for contrast */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1.5s;
+    }
+
+    th {
+        background-color: #6c757d; /* Bootstrap secondary color */
+        color: white;
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tr.table-success {
+        background-color: #d4edda; /* Light green for ready donors */
+    }
+
+    tr.table-danger {
+        background-color: #f8d7da; /* Light red for not ready donors */
+    }
+
+    tr.table-secondary {
+        background-color: #e2e3e5; /* Light gray for header row */
+    }
+
+    h2 {
+        color: #6c757d; /* Muted gray */
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    a.btn {
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 5px rgba(23, 162, 184, 0.4); }
+        50% { box-shadow: 0 0 15px rgba(23, 162, 184, 0.8); }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+{% if donor %}
+<h3 class="text-center">All Donor</h3>
+<table class="table table-sm table-bordered">
+  <tr class="table-secondary">
+    <th>Name</th>
+    <th>Blood Group</th>
+    <th>State | City</th>
+    <th>Status</th>
+    <th>Details</th>
+  </tr>
+  {% for i in donor %}
+    {% if i.ready_to_donate %}
+      <tr class="table-success">
+        <td>{{i.donor.get_full_name}}</td>
+        <td>{{i.blood_group}}</td>
+        <td>{{i.state}} | {{i.city}}</td>
+        <td>Ready To Donate</td>
+        <td><a href="/donors_details/{{i.id}}/" class="btn btn-sm btn-outline-secondary">View</a></td>
+      </tr>
+    {% else %}
+      <tr class="table-danger">
+        <td>{{i.donor.get_full_name}}</td>
+        <td>{{i.blood_group}}</td>
+        <td>{{i.last_donate}}</td>
+        <td>Not Ready To Donate</td>
+        <td><a href="" class="btn btn-sm btn-outline-secondary">View</a></td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+{% else %}
+<h2>No Donor Available</h2>
+{% endif %}
+</div>
+{% endblock %}

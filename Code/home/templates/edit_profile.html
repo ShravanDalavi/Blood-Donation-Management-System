@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile {% endblock %}
+{% block css %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+    .container {
+        margin-top: 30px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-in-out;
+    }
+    h3 {
+        font-weight: bold;
+        color: #4a4a4a;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+        color: #0056b3;
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+    }
+    .btn-primary {
+        background-color: #0056b3;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #003f8c;
+    }
+    .form-group a {
+        font-size: 14px;
+        color: #0056b3;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+    .form-group a:hover {
+        text-decoration: underline;
+    }
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h3>Edit Profile</h3>
+    <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" id="username" value="{{user}}" readonly>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="first_name" id="first_name" value="{{request.user.first_name}}" readonly>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" value="{{request.user.last_name}}" readonly>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label>Email ID</label>
+                <input type="email" class="form-control" name="email" id="email" value="{{request.user.email}}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Contact Number</label>
+                <input type="tel" class="form-control" name="phone" id="phone" value="{{donor_profile.phone}}">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" id="state" value="{{donor_profile.state}}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>City</label>
+                <input type="text" class="form-control" name="city" id="city" value="{{donor_profile.city}}">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-12">
+                <label>Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3">{{donor_profile.address}}</textarea>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label>Gender</label>
+                <input type="text" class="form-control" name="gender" value="{{donor_profile.gender}}" readonly>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Blood Group</label>
+                <input type="text" class="form-control" name="blood_group" value="{{donor_profile.blood_group}}" readonly>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label>Profile Photo</label>
+                <a href="{{donor_profile.image.url}}">Click here to view the current profile picture</a>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Date Of Birth</label>
+                <input type="date" class="form-control" id="date" name="date" value="{{donor_profile.date_of_birth}}" readonly>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Update Profile</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Profile Updated Successfully!");
+    document.location = "/profile";
+    {% endif %}
+</script>
+{% endblock %}

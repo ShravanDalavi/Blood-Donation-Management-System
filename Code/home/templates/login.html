@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %}Blood Donation{% endblock %}
+
+{% block css %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .form-label {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-control:focus {
+        border-color: #ff7e5f;
+        box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+    }
+
+    .form-control.error {
+        border-color: #cc0000;
+        box-shadow: 0 0 8px rgba(204, 0, 0, 0.5);
+    }
+
+    .btn {
+        background-color: #ff7e5f;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        padding: 0.75rem;
+        border-radius: 5px;
+        transition: all 0.3s ease, transform 0.2s;
+        cursor: pointer;
+    }
+
+    .btn:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+    }
+
+    .btn:hover:enabled {
+        background-color: #feb47b;
+        transform: scale(1.05);
+    }
+
+    .error-box {
+        background-color: #ffe6e6;
+        color: #cc0000;
+        border: 1px solid #ffcccc;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .error-box a {
+        color: #cc0000;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .password-error {
+        color: #cc0000;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<form method="POST" onsubmit="return validateForm()"> {% csrf_token %}
+    <div class="container">
+        <h2 class="text-center" style="color: #ff7e5f;">Login</h2>
+        {% if alert == 'user_not_found' %}
+        <div class="error-box">
+            User not found. <a href="/register">Create an account</a>.
+        </div>
+        {% elif alert == 'wrong_password' %}
+        <div class="error-box">
+        </div>
+        {% endif %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+            <div class="password-error" id="passwordError"></div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn" id="submitBtn" disabled>Submit</button>
+        </div>
+    </div>
+</form>
+<script>
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function toggleSubmitButton() {
+        if (usernameInput.value.trim() && passwordInput.value.trim()) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    function validateForm() {
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+
+        if (!username || !password) {
+            alert("Please fill in both username and password.");
+            return false;
+        }
+        return true;
+    }
+
+    usernameInput.addEventListener('input', toggleSubmitButton);
+    passwordInput.addEventListener('input', toggleSubmitButton);
+
+    {% if alert == 'user_not_found' %}
+    usernameInput.classList.add('error');
+    {% elif alert == 'wrong_password' %}
+    passwordInput.classList.add('error');
+    {% endif %}
+</script>
+{% endblock %}

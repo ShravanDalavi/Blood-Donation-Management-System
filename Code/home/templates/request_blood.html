@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %} Blood Donation {% endblock %}
+
+{% block css %}
+<style>
+    body {
+        background-color: #eef2f7;
+        font-family: 'Arial', sans-serif;
+        color: #444;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 25px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .container:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    h3 {
+        text-align: center;
+        font-weight: bold;
+        color: #1d3557;
+    }
+
+    label {
+        font-weight: bold;
+        color: #5a5a5a;
+    }
+
+    input, textarea, select {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #457b9d;
+        outline: none;
+        box-shadow: 0 0 5px rgba(69, 123, 157, 0.4);
+    }
+
+    button {
+        background: linear-gradient(90deg, #457b9d, #1d3557);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        display: block;
+        margin: 20px auto 0;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #1d3557, #457b9d);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    select {
+        background-color: #f9f9f9;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h3>Request For Blood</h3>
+    <form method="POST"> {% csrf_token %}
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Full Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="form-group col-md-6">
+                <label>Email ID</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email ID" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Contact Number</label>
+                <input type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Contact Number" required>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="form-group col-md-6">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" id="state" placeholder="Enter State" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label>City</label>
+                <input type="text" class="form-control" name="city" id="city" placeholder="Enter City" required>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="form-group col-md-12">
+                <label>Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter Address" required></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="form-group col-md-6">
+                <label>Blood Group</label>
+                <select class="form-control" name="blood_group" required>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Date Of Donation</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
