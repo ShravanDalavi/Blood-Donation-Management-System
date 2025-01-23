@@ -129,7 +129,7 @@ Manage user accounts and ensure compliance with privacy policies.
 
 --- 
 ## Project Report
-The detailed project report, including the analysis, design, and diagrams (DFD, ERD, Use Case, etc.), is included in the repository. Refer to `[BDMS_Report.pd](https://github.com/ShravanDalavi/Blood-Donation-Management-System/blob/main/Report/BDMS_Report.pdf)` for comprehensive documentation.
+The detailed project report, including the analysis, design, and diagrams (DFD, ERD, Use Case, etc.), is included in the repository. Refer to [BDMS_Report.pd](https://github.com/ShravanDalavi/Blood-Donation-Management-System/blob/main/Report/BDMS_Report.pdf) for comprehensive documentation.
 
 --- 
 
