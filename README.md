@@ -14,7 +14,6 @@ The **Blood Donation Management System (BDMS)** is a web-based platform designed
 - [Limitations](#limitations)
 - [Future Enhancements](#future-enhancements)
 - [Project Report](#project-report)
-- [License](#license)
 
 ---
 
