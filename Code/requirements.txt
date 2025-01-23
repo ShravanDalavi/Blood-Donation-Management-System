@@ -1,15 +1,2 @@
-numpy
-jupyter
-opencv-python
-torch
-torchvision
-tensorflow
-scikit-image
-Pillow
-matplotlib
-ffmpeg-python
-tqdm
-requests
-flask
-flask-cors
-gunicorn
+Django>=3.2,<4.0
+# Add other dependencies here
