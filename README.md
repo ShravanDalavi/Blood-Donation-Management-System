@@ -150,6 +150,6 @@ The detailed project report, including the analysis, design, and diagrams (DFD, 
   - GitHub:  [Profile](https://github.com/SonawaneAshwini)
 
 ### Show Your Support
-**If you enjoyed this tutorial, don't forget to [⭐ star the repository](https://github.com/ShravanDalavi/Web-Mini-Projects) and [follow for updates](https://github.com/ShravanDalavi).**
+**If you enjoyed this tutorial, don't forget to [⭐ star the repository](https://github.com/ShravanDalavi/Blood-Donation-Management-System) and [follow for updates](https://github.com/ShravanDalavi).**
 
 **Thank you for exploring this repository! I hope you find these projects both interesting and useful. 😊**
