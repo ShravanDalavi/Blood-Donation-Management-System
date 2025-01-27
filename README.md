@@ -138,3 +138,18 @@ The detailed project report, including the analysis, design, and diagrams (DFD, 
 - Django Documentation: [Django](https://docs.djangoproject.com/en/5.1/)
 - Python Official Website: [Python](https://www.python.org/)
 - World Health Organization: [WHO](https://www.who.int/)
+  
+---
+## Contributors ✨
+- Shravan Dalavi
+  - Contact: shravandalavi137@gmail.com
+  - GitHub: [Profile](https://github.com/ShravanDalavi)
+    
+- Ashwini Sonawane
+  - Contact: ashwinisonawane@gmail.com
+  - GitHub:  [Profile](https://github.com/SonawaneAshwini)
+
+### Show Your Support
+**If you enjoyed this tutorial, don't forget to [⭐ star the repository](https://github.com/ShravanDalavi/Web-Mini-Projects) and [follow for updates](https://github.com/ShravanDalavi).**
+
+**Thank you for exploring this repository! I hope you find these projects both interesting and useful. 😊**
