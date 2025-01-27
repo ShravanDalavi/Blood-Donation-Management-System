@@ -1,4 +1,5 @@
 # Blood Donation Management System
+
 The **Blood Donation Management System (BDMS)** is a web-based platform designed to connect blood donors with patients in need directly. Built using Python and the Django framework, this project eliminates inefficiencies in traditional systems by enabling real-time communication, promoting donor privacy, and fostering community-driven healthcare.
 
 ---
