@@ -137,7 +137,6 @@ The detailed project report, including the analysis, design, and diagrams (DFD, 
 
 - Django Documentation: [Django](https://docs.djangoproject.com/en/5.1/)
 - Python Official Website: [Python](https://www.python.org/)
-- World Health Organization: [WHO](https://www.who.int/)
   
 ---
 ## Contributors ✨
