@@ -14,6 +14,7 @@ The **Blood Donation Management System (BDMS)** is a web-based platform designed
 - [Limitations](#limitations)
 - [Future Enhancements](#future-enhancements)
 - [Project Report](#project-report)
+- [Contributors ](#contributors✨)
 
 ---
 
@@ -139,7 +140,7 @@ The detailed project report, including the analysis, design, and diagrams (DFD, 
 - Python Official Website: [Python](https://www.python.org/)
   
 ---
-## Contributors ✨
+## Contributors✨
 - Shravan Dalavi
   - Contact: shravandalavi137@gmail.com
   - GitHub: [Profile](https://github.com/ShravanDalavi)
